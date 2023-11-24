@@ -1,22 +1,19 @@
-const { DataTypes } = require('sequelize');
-// Exportamos una funcion que define el modelo
-// Luego le injectamos la conexion a sequelize.
+const { DataTypes, UUIDV4 } = require('sequelize');
+
 module.exports = (sequelize) => {
-  // defino el modelo
-  sequelize.define('Driver', {
+  
+  const Driver = sequelize.define('Driver', {
     id:{
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      // primaryKey: true
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      primaryKey: true
     },
-    name: {
-      type: DataTypes.STRING(30),
-      allowNull: false,
-    },
-    lastName: {
-      type: DataTypes.STRING(50),
-      allowNull: false
-    },
+    name: 
+
+      {
+        type: DataTypes.JSON, // Especifica que 'name' es de tipo JSON
+        allowNull: false,
+      },
     description: {
       type: DataTypes.STRING,
       allowNull: false
@@ -24,15 +21,18 @@ module.exports = (sequelize) => {
     image: {
       type: DataTypes.STRING(100),
       allowNull: false,
-      isUrl: true
+      isUrl: true,
+      // defaultValue: 'https://hips.hearstapps.com/autoweek/assets/s3fs-public/DPkZATWXUAAnsCz.jpg'
     },
     nationality: {
       type: DataTypes.STRING(40),
       allowNull: false
     },
     dob: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       allowNull: false
     }
-  });
+  },
+  { timestamps: false });
+  return Driver
 };

@@ -1,15 +1,17 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-    sequelize.define('Team' , {
+   const Teams = sequelize.define('Teams' , {
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true
         },
         name: {
-            type: DataTypes.STRING(50),
+            type: DataTypes.STRING(70),
             allowNull: false
         }
-    })
+    },
+        { timestamps: false });
+    return Teams
 }
