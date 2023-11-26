@@ -1,30 +1,38 @@
 const { Teams } = require('../db');
+const axios = require('axios');
+
 
 const getAllTeams = async (req, res) => {
-    try {
- // Obtener drivers de la API
- const apiResponse = await axios.get('http://localhost:5000/drivers');
- const apiDrivers = apiResponse.data;
+  try {
+    const { data } = await axios.get('http://localhost:5000/drivers');
 
- // Obtener equipos de los drivers en la API
- const apiTeams = apiDrivers.map(driver => driver.teams);
+    const foundTeam = await Teams.findAll();
 
- // Verificar si ya hay equipos en la base de datos
- const dbTeams = await Teams.findAll();
-
- // Si no hay equipos en la base de datos, guardar los obtenidos de la API
- if (dbTeams.length === 0) {
-     await Teams.bulkCreate(apiTeams.flat()); // Utiliza flat para aplanar el array de arrays
- }
-
- // Obtener equipos de la base de datos (independientemente de si ya había o no)
- const allTeams = await Teams.findAll();
-
- return res.status(200).json(allTeams);
-        
-    } catch (error) {
-    return res.status(500).json({ message: error.message });
+    if (foundTeam.length > 0) {
+      return res.status(200).json(foundTeam);
     }
+
+    const teamSet = new Set();
+
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].teams) {
+        let teamDriver = data[i].teams.split(",");
+        for (let j = 0; j < teamDriver.length; j++) {
+          teamSet.add(teamDriver[j].trim());
+        }
+      }
+    }
+
+    const teamsArray = [...teamSet];
+
+    for (let team of teamsArray) {
+      await Teams.create({ name: team });
+    }
+
+    return res.status(200).json(teamsArray);
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
 };
 
 module.exports = {
