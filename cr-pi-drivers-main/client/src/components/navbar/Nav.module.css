@@ -1,0 +1,27 @@
+@import url('https://fonts.cdnfonts.com/css/formula-a');
+
+.navbar {
+    width: 75%;
+    background-color:rgba(200, 196, 196, 0.5);
+    color: white; /* Color del texto en la barra de navegación */
+    text-align: center; /* Para centrar el contenido de la barra de navegación */
+    padding: 1rem; /* Añade relleno para mejorar la apariencia */
+    position: fixed; /* Hace que la barra de navegación sea fija en la parte superior */
+    top: 30px; /* Posiciona la barra en la parte superior */
+    left: 12%;
+    z-index: 1000; /* Asegura que esté encima de otros elementos  */
+    display: flex;
+    justify-content: space-between; /* Añade espacio entre los elementos */
+    align-items: center; /* Alinea verticalmente los elementos en el centro */
+    border-radius: 20px;
+    height: 30px;
+    transition: transform 0.5s; 
+    font-family: 'FORMULA-A', sans-serif;
+  }
+
+
+  .navbar:hover {
+    box-shadow: paleturquoise;
+    background-color:  rgb(142, 4, 4) /* Cambia los valores RGB para obtener un color más claro */
+
+  }
