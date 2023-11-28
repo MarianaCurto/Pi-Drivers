@@ -20,6 +20,7 @@ const getDriversByName = async (req, res) => {
     });
     const driverApi = await axios(`http://localhost:5000/drivers/name?=${name}`)
       .data;
+      
     driver = [...driverDB, ...driverApi];
     driver = driver.slice(0, 16);
     return driver;
