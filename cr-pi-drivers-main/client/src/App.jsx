@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Landing from './views/landing/Landing'
 import Home from './views/homee/Home'
+import Detail from './views/detail/Detail'
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
     <Routes>
       <Route path='/' element={<Landing/>} ></Route>
       <Route path='/home' element={<Home/>} ></Route>
+      <Route path='/detail/:id' element= {<Detail />}></Route>
     </Routes>
   </div>
   )

@@ -29,4 +29,5 @@
 .container:hover {
     box-shadow: paleturquoise;
     transform: scale(1.1);
+    background-color: rgb(142, 4, 4);
     }
