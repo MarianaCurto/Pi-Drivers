@@ -29,7 +29,9 @@ const getAllTeams = async (req, res) => {
       await Teams.create({ name: team });
     }
 
-    return res.status(200).json(teamsArray);
+    const found = await Teams.findAll()
+
+    return res.status(200).json(found);
   } catch (error) {
     return res.status(500).send(error.message);
   }

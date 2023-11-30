@@ -10,7 +10,7 @@ const { getAllTeams } = require('../controllers/getAllTeams');
 
 router.get('/drivers', getDriver);
 
-router.get('/drivers/name', getDriversByName);
+// router.get('/drivers', getDriversByName);
 
 router.get('/drivers/:id', getDetail);
 

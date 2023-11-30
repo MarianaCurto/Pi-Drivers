@@ -25,16 +25,17 @@ const Detail = () => {
 
 
     return(
-        <div>
+        <div className={style.cont}>
+         
              <div>
-         {driver.name && <h2>NAME | {driver.name}</h2>}
-         {driver.dob && <p>STATUS | {driver.dob}</p>}
-         {driver.nationality && <p>SPECIES | {driver.nationality}</p>}
-         {driver.teams && <p>GENDER | {driver.teams}</p>}
-         {driver.description && <p>ORIGIN | {driver.description}</p>}
+         {driver.name && <h2>NAME | {`${driver?.name?.forename} ${driver?.name?.surname}`}</h2>}
+         {driver.dob && <p>DOB | {driver.dob}</p>}
+         {driver.nationality && <p>NATIONALITY | {driver.nationality}</p>}
+         {driver.teams && <p>TEAMS | {driver.teams}</p>}
+         {driver.description && <p>DESCRIPTION | {driver.description}</p>}
          </div>
        
-         {driver.image && <img src={driver.image} alt={driver.name} />}
+         {driver.image && <img src={driver?.image?.url} alt={driver.name} />}
 
         </div>
     )

@@ -7,6 +7,10 @@ const Nav = () => {
     return(
         <div className={style.navbar}>
 
+            <Link to = '/home'>
+            <button>HOME</button>
+            </Link>
+
             <Link to = ''>
             <button>NEW DRIVER</button>
             </Link>

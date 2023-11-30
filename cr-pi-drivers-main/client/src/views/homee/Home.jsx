@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllDrivers } from '../../redux/actions';
 import style from './Home.module.css'
-import Nav from "../../components/navbar/Nav";
+// import Nav from "../../components/navbar/Nav";
 import Card from '../../components/card/Card';
 import Pages from '../../components/pagees/Pages'
 
 const Home = () => {
 
-const [driversPerPage, setDriversPerPage] = useState(8);
+const [driversPerPage, setDriversPerPage] = useState(9);
 const [currentPage, setCurrentPage] = useState(1);
 
 
@@ -28,23 +28,8 @@ const totalDrivers = allDrivers.length;
     return (
         <div className={style.container}>
             
-           <Nav />
            
-            {/* {
-                allDrivers.map(({id,forename,surname,image})=>{
-                    return(
-                      <Card
-                      key= {id}
-                      id = {id}
-                      name = {forename}
-                      surname = {surname}
-                      image = {image}
-                    //   teams = {teams}
-                     />
-                    )
-
-                }).slice(firstIndex,lastIndex)
-            } */}
+           
 
 {allDrivers.slice(firstIndex, lastIndex).map(({ id, forename, surname, image }) => (
         <Card

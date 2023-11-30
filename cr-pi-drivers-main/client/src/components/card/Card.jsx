@@ -5,13 +5,13 @@ const Card = ({id, name, surname, image}) => {
     return(
         <div className={style.container}>
 
-<Link to={`/drivers/${id}`}>
+<Link to={`/detail/${id}`}>
         <h2 className={style.name}>{name} {surname}</h2>
       
       </Link>
           
    
-      <Link to={`/drivers/${id}`}>
+      <Link to={`/detail/${id}`}>
         <img className={style.cardimage} src={image} alt="" />
       </Link>
 

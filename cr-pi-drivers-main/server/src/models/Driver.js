@@ -8,12 +8,16 @@ module.exports = (sequelize) => {
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true
     },
-    name: 
+    forename: 
 
       {
-        type: DataTypes.JSON, // Especifica que 'name' es de tipo JSON
+        type: DataTypes.STRING, // Especifica que 'name' es de tipo JSON
         allowNull: false,
       },
+    surname: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     description: {
       type: DataTypes.STRING,
       allowNull: false

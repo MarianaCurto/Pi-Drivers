@@ -1,0 +1,40 @@
+@import url('https://fonts.cdnfonts.com/css/formula-a');
+
+.cont {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; 
+  position: relative;
+  color: black;
+  background-color: black;
+  padding: 40px;
+  padding-top: 20px;
+  border-radius: 20px;
+  font-family: 'FORMULA-A', sans-serif;
+  width: 800px;
+  height: 400px;
+  overflow: hidden;
+  background-color:rgba(100, 100, 100, 0.5);
+  transition: transform 0.5s; 
+  font-size: small;
+  text-align: left;
+  background-color:rgba(100, 100, 100, 0.5);
+  transition: transform 0.5s; 
+}
+
+.cont:hover {
+  box-shadow: paleturquoise;
+  transform: scale(1.05) rotate(2deg); 
+  background-color:  rgb(142, 4, 4);
+  color: white;
+  
+}
+
+.cont img {
+  border-radius: 40px;
+  max-width: 100%; /* Limita el ancho de la imagen al 100% del contenedor */
+  max-height: 100%; /* Limita la altura de la imagen al 100% del contenedor */
+  object-fit: contain;
+  margin-bottom: -20px; /* Ajusta según sea necesario para mover la imagen hacia arriba */
+
+}
