@@ -35,6 +35,10 @@ module.exports = (sequelize) => {
     dob: {
       type: DataTypes.DATEONLY,
       allowNull: false
+    },
+    created: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
     }
   },
   { timestamps: false });

@@ -56,7 +56,7 @@ const getDriver = async (req, res) => {
             })
     
             const result = (await axios.get('http://localhost:5000/drivers')).data;
-            // console.log(data)
+          
     
             const driversDefaultImage = result.map(driver => {
                 return {
@@ -66,10 +66,11 @@ const getDriver = async (req, res) => {
                     description: driver.description,
                     image: driver.image.url || 'https://hips.hearstapps.com/autoweek/assets/s3fs-public/DPkZATWXUAAnsCz.jpg',
                     nationality: driver.nationality,
-                    dob: driver.dob
+                    dob: driver.dob,
+                    created: false
                 };
             });
-            const total = [...dbDrivers, driversDefaultImage]
+            const total = [...dbDrivers, ...driversDefaultImage]
             return res.status(200).json(total)
               
         } catch (error) {
