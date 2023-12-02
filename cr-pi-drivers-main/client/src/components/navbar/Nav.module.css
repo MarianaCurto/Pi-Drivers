@@ -8,16 +8,17 @@
     padding: 1rem; /* Añade relleno para mejorar la apariencia */
     position: fixed; /* Hace que la barra de navegación sea fija en la parte superior */
     top: 0; /* Posiciona la barra en la parte superior */
-    margin-left: -5%;
-    margin-right: 15%;
+    margin-left: 3%;
+    margin-right: 3%;
     z-index: 1000; /* Asegura que esté encima de otros elementos  */
     display: flex;
-    justify-content: space-between; /* Añade espacio entre los elementos */
-    align-items: center; /* Alinea verticalmente los elementos en el centro */
+    justify-content: center;
+    align-items: center;
     border-radius: 20px;
     height: 30px;
     transition: transform 0.5s ; 
     font-family: 'FORMULA-A', sans-serif;
+    gap: 20px;
   }
 
 

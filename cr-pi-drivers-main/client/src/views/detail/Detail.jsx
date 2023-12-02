@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Nav from "../../components/navbar/Nav";
 import style from './Detail.module.css';
 
 
@@ -26,6 +27,8 @@ const Detail = () => {
 
     return(
         <div className={style.cont}>
+
+         <Nav />
          
              <div>
          {driver.name && <h2>NAME | {`${driver?.name?.forename} ${driver?.name?.surname}`}</h2>}

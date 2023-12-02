@@ -1,9 +1,28 @@
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import SearchBar from "../searchbar/SearchBar";
+import Order from "../orderfilter/Order";
 import style from './Nav.module.css'
 
 
 const Nav = () => {
+
+const dispatch = useDispatch();
+
+// const handleOrderChange = (order) => {
+//         setCurrentOrder(order);
+//         dispatch(orderDrivers(order));
+//       };
+
+      const handleOrderChange = (order) => {
+        setCurrentOrder(order);
+        if (order === 'Asc' || order === 'Desc') {
+          dispatch(orderDriversDob(order)); // Usar el nuevo tipo de ordenamiento
+        } else {
+          dispatch(orderDrivers(order));
+        }
+      };
+    
     return(
         <div className={style.navbar}>
 
@@ -11,15 +30,16 @@ const Nav = () => {
             <button>HOME</button>
             </Link>
 
-            <Link to = ''>
+            <Link to = '/form'>
             <button>NEW DRIVER</button>
             </Link>
 
             <SearchBar />
 
-            <button>ALL DRIVERS</button>
+            <Order handleOrderChange = {handleOrderChange}/>
 
-            <button>RESET</button>
+           
+
 
         </div>
     )

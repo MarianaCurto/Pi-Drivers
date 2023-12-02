@@ -36,18 +36,18 @@ const visiblePageNumbers = pageNumbers.slice(startPage - 1, endPage);
         <div className={style.paginationcontainer}>
 
             
-     <button onClick={onPreviousPage} disabled={currentPage === 1}>
+     <button onClick={onPreviousPage} disabled={currentPage === 1} className={style.buttonn}>
         Previous
       </button>
      
 
       {visiblePageNumbers.map((noPage) => (
-        <button key={noPage} onClick={() => onSpecificPage(noPage)}>
+        <button key={noPage} onClick={() => onSpecificPage(noPage)} className={`${style.paginationbutton} ${noPage === currentPage ? style.paginationbuttonactive : ''}`}>
           {noPage}
         </button>
       ))}
 
-<button onClick={onNextPage} disabled={currentPage === Math.ceil(totalDrivers / driversPerPage)}>
+<button onClick={onNextPage} disabled={currentPage === Math.ceil(totalDrivers / driversPerPage)} className={style.butonn}>
         Next
       </button>
 
