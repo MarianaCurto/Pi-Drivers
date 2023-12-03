@@ -22,7 +22,7 @@ const handleChange = (event) => {
     return(
         <div className= {style.filtercontainer}>
 
-            <input type= 'search' value= {name} onChange={handleChange}  placeholder="Search by name..." />
+            <input type= 'search' value= {name} onChange={handleChange} className={style.searchInput}  placeholder="Search by name..." />
             <button onClick={handleSearch} >SEARCH</button>
 
         </div>

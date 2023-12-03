@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllDrivers, getAllTeams } from '../../redux/actions';
+import { getAllDrivers, getAllTeams, goback } from '../../redux/actions';
 import style from './Home.module.css';
-import Nav from '../../components/navbar/Nav';
 import Card from '../../components/card/Card';
 import Pages from '../../components/pagees/Pages';
 
@@ -32,14 +31,16 @@ useEffect(() => {
 const totalDrivers = allDrivers.length;
 
 
-
+const handleBack = () => {
+  dispatch(goback());
+};
 
 
 
     return (
         <div className={style.container}>
 
-      <Nav />     
+      <button onClick={handleBack}>BACK</button>  
 
      {allDrivers.slice(firstIndex, lastIndex).map(({ id, forename, surname, image }) => (
         <Card

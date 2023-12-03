@@ -8,8 +8,8 @@
     padding: 1rem; /* Añade relleno para mejorar la apariencia */
     position: fixed; /* Hace que la barra de navegación sea fija en la parte superior */
     top: 0; /* Posiciona la barra en la parte superior */
-    margin-left: 3%;
-    margin-right: 3%;
+   
+    right: 50px;
     z-index: 1000; /* Asegura que esté encima de otros elementos  */
     display: flex;
     justify-content: center;
@@ -24,6 +24,6 @@
 
   .navbar:hover {
     box-shadow: paleturquoise;
-    background-color:  rgb(142, 4, 4) /* Cambia los valores RGB para obtener un color más claro */
+    background-color:  rgb(142, 4, 4); /* Cambia los valores RGB para obtener un color más claro */
 
   }

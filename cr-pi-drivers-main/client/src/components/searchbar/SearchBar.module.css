@@ -3,12 +3,17 @@
 .filtercontainer {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     font-family: 'FORMULA-A', sans-serif;
     margin-right: 10px;
     padding: 5px;
-    
+    gap: 10px;
 }
 
+.searchInput {
+    height: 25px;
+    font-family: 'FORMULA-A', sans-serif; /* Ajusta la altura según sea necesario */
+    /* Otros estilos que desees agregar */
+  }
 
 

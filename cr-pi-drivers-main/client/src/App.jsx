@@ -6,19 +6,20 @@ import Landing from './views/landing/Landing'
 import Home from './views/homee/Home'
 import Detail from './views/detail/Detail'
 import Form from './views/form/Form'
+import Nav from './components/navbar/Nav'
 
 
 
 function App() {
 
 
-// const { pathname } = useLocation();
+const { pathname } = useLocation();
   
 
   return (
   <div>
 
-{/* {pathname !== "/" && <Nav />} */}
+{pathname !== "/" && <Nav />}
 
     <Routes>
       <Route path='/' element={<Landing/>} ></Route>

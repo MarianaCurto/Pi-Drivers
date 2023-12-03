@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import SearchBar from "../searchbar/SearchBar";
 import Order from "../orderfilter/Order";
 import style from './Nav.module.css'
@@ -8,6 +8,8 @@ import style from './Nav.module.css'
 const Nav = () => {
 
 const dispatch = useDispatch();
+
+const location = useLocation();
 
 // const handleOrderChange = (order) => {
 //         setCurrentOrder(order);
@@ -24,7 +26,7 @@ const dispatch = useDispatch();
       };
     
     return(
-        <div className={style.navbar}>
+        <div className={style.navbar} style={{ position: location.pathname === '/detail/:id' ? 'relative' : 'fixed' }}>
 
             <Link to = '/home'>
             <button>HOME</button>

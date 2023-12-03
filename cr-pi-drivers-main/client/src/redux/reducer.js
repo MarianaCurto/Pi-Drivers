@@ -1,4 +1,4 @@
-import { GET_ALL_DRIVERS, ORDER_DRIVERS, RESET_ORDER, ORDER_DRIVERS_DOB, GET_ALL_TEAMS, FILTER_TEAMS, FILTER_DRIVERS, GET_DRIVER_BY_NAME } from "./action-types";
+import { GET_ALL_DRIVERS, ORDER_DRIVERS, RESET_ORDER, ORDER_DRIVERS_DOB, GET_ALL_TEAMS, FILTER_TEAMS, FILTER_DRIVERS, GET_DRIVER_BY_NAME, GO_BACK } from "./action-types";
 
 const initialState = {
     allDrivers: [],
@@ -29,7 +29,7 @@ const reducer = (state = initialState, action) => {
         case GET_DRIVER_BY_NAME:
             return {
                 ...state,
-                filteredDrivers: action.payload
+                allDrivers: action.payload
             }
 
         case ORDER_DRIVERS:
@@ -89,19 +89,27 @@ const reducer = (state = initialState, action) => {
             }
         
         case FILTER_TEAMS :
-            if(action.payload === 'All teams'){
-                return{
-                    ...state,
-                    allTeams: state.filteredTeams
-                }
-            }
-            const teamsFilter = state.allTeams.filter((driver) => driver.teams === action.payload)
-            if(teamsFilter.length){
-                return {
-                    ...state,
-                    allTeams: teamsFilter
-                }
-            }
+            // if(action.payload === 'All teams'){
+            //     return{
+            //         ...state,
+            //         allTeams: state.filteredTeams
+            //     }
+            // }
+            // const teamsFilter = state.allTeams.filter((driver) => driver.teams === action.payload)
+            // if(teamsFilter.length){
+            //     return {
+            //         ...state,
+            //         allTeams: teamsFilter
+            //     }
+            // }
+            return {
+                ...state,
+                filteredDrivers: state.allDrivers.filter((t) => {
+                  if (t.team) {
+                    return t.team.includes(action.payload);
+                  }
+                }),
+              };
 
         case RESET_ORDER:
                 return {
@@ -109,6 +117,12 @@ const reducer = (state = initialState, action) => {
                   allDrivers: [...state.filteredDrivers],
                   currentPage: 1
                 }
+        case GO_BACK:
+            return {
+                ...state,
+                allDrivers: [...state.filteredDrivers],
+                currentPage: 1
+            }
         default: 
         
             return {

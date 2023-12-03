@@ -28,7 +28,7 @@ const Detail = () => {
     return(
         <div className={style.cont}>
 
-         <Nav />
+         
          
              <div>
          {driver.name && <h2>NAME | {`${driver?.name?.forename} ${driver?.name?.surname}`}</h2>}

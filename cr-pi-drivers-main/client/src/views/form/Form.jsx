@@ -9,7 +9,8 @@ const Form = () => {
         nationality: "",
         dob: "",
         description: "",
-        teams: ""
+        teams: [],
+        image: ""
       });
 
       const [errors, setErrors] = useState({});
@@ -28,10 +29,14 @@ const Form = () => {
       }, [driverData]);
 
     return (
+      
+
+        
         <div className={style.container}>
 
             <form action="" className={style.formContainer}>
-            <div class="formRow">
+              
+            <div className={style.formRow}>
                 <label htmlFor="forename">FORENAME</label>
                 <input type="forename"
                        value={driverData.forename}
@@ -52,7 +57,7 @@ const Form = () => {
 
             <br />
 
-            <div class="formRow">
+            <div className={style.formRow}>
                 <label htmlFor="nationality">NATIONALITY</label>
                 <input type="nationality"
                        value={driverData.nationality}
@@ -61,7 +66,7 @@ const Form = () => {
                 
                 />
 
-                <label htmlFor="dob">DOB</label>
+                <label htmlFor="dob">BIRTH DATE</label>
                 <input type="dob" 
                        value={driverData.dob}
                        name="dob"

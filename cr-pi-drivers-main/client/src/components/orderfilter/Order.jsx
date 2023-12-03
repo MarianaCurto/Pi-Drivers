@@ -37,11 +37,11 @@ const Order = () => {
 
           <select onChange = {handleFilter} className= {style.teamselect}>
             <option value='All teams'>ALL TEAMS</option>
-            {allTeams.length && allTeams.map(({id, name}) => {
-                return (
-                    <option key = {id} value={name}>{name}</option>
+            {allTeams?.map((t) => 
+               (
+                    <option key = {t.id} >{t.name}</option>
                 )
-            })}
+            )}
           </select>
 
           <select onChange={handleFilterDrivers} className={style.driverselect}>

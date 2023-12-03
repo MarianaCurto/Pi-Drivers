@@ -1,4 +1,4 @@
-import { GET_ALL_DRIVERS, FILTER_TEAMS, ORDER_DRIVERS, RESET_ORDER, ORDER_DRIVERS_DOB, GET_ALL_TEAMS, FILTER_DRIVERS, GET_DRIVER_BY_NAME } from "./action-types";
+import { GET_ALL_DRIVERS, FILTER_TEAMS, ORDER_DRIVERS, RESET_ORDER, ORDER_DRIVERS_DOB, GET_ALL_TEAMS, FILTER_DRIVERS, GET_DRIVER_BY_NAME, GO_BACK } from "./action-types";
 import axios from 'axios';
 
 export const getAllDrivers = () => {
@@ -34,7 +34,7 @@ export const getAllTeams = () => {
 export const getDriverByName = (name) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(`http://localhost:3001/drivers/?name=${name}`);
+      const { data } = await axios.get(`http://localhost:3001/drivers?name=${name}`);
       return dispatch({ type: GET_DRIVER_BY_NAME, payload: data });
     } catch (error) {
       throw Error(error.message)
@@ -50,8 +50,8 @@ export const orderDriversDob = (dob) => {
   return { type: ORDER_DRIVERS_DOB, payload: dob }
 };
 
-export const filterTeams = (teams) => {
-   return { type: FILTER_TEAMS, payload: teams}
+export const filterTeams = (team) => {
+   return { type: FILTER_TEAMS, payload: team}
 };
 
 export const filterDrivers = (driver) => {
@@ -60,4 +60,8 @@ export const filterDrivers = (driver) => {
 
 export const resetOrder = () => {
   return { type: RESET_ORDER };
+};
+
+export const goback = () => {
+  return { type: GO_BACK }
 };

@@ -11,8 +11,8 @@
     height: 400px;
     margin: auto; /* Centra horizontalmente el contenedor */
     position: absolute;
-    top: 10%; /* Posición vertical en el centro */
-    right: 15%; /* Posición horizontal en el centro */
+    top: 20%; /* Posición vertical en el centro */
+    right: 10%; /* Posición horizontal en el centro */
     border-radius: 20px; /* Borde redondeado */
     overflow: hidden;
     transition: transform 0.5s;
@@ -64,3 +64,4 @@
     padding: 5px;
     resize: vertical; /* O "none" para desactivar la redimensión horizontal */
   }
+
