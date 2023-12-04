@@ -1,4 +1,12 @@
-import { GET_ALL_DRIVERS, FILTER_TEAMS, ORDER_DRIVERS, RESET_ORDER, ORDER_DRIVERS_DOB, GET_ALL_TEAMS, FILTER_DRIVERS, GET_DRIVER_BY_NAME, GO_BACK } from "./action-types";
+import { GET_ALL_DRIVERS, 
+         FILTER_TEAMS, 
+         ORDER_DRIVERS, 
+         RESET_ORDER, 
+         ORDER_DRIVERS_DOB, 
+         GET_ALL_TEAMS, 
+         FILTER_DRIVERS, 
+         GET_DRIVER_BY_NAME, 
+         GO_BACK } from "./action-types";
 import axios from 'axios';
 
 export const getAllDrivers = () => {
@@ -40,6 +48,17 @@ export const getDriverByName = (name) => {
       throw Error(error.message)
     }
   };
+};
+
+export const postDriver = (driverData) => {
+  return async (dispatch) => {
+    try {
+        await axios.post("http://localhost:3001/drivers", driverData);
+        console.log('creado');
+    } catch (error) {
+        console.log(error.message);
+    }
+}
 };
 
 export const orderDrivers = (orden) => {

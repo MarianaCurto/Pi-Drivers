@@ -7,12 +7,12 @@
     text-align: center;
     background-color: rgba(255, 255, 255, 0.5); /* Fondo transparente para el contenedor */
     padding: 40px;
-    width: 600px; /* Aumenta el ancho del contenedor según tus necesidades */
-    height: 400px;
+    width: 800px; /* Aumenta el ancho del contenedor según tus necesidades */
+    height: 500px;
     margin: auto; /* Centra horizontalmente el contenedor */
     position: absolute;
-    top: 20%; /* Posición vertical en el centro */
-    right: 10%; /* Posición horizontal en el centro */
+    top: 15%; /* Posición vertical en el centro */
+    right: 20%; /* Posición horizontal en el centro */
     border-radius: 20px; /* Borde redondeado */
     overflow: hidden;
     transition: transform 0.5s;
@@ -63,5 +63,37 @@
     height: 110px; /* O ajusta a un valor específico */
     padding: 5px;
     resize: vertical; /* O "none" para desactivar la redimensión horizontal */
+    
   }
 
+
+  .column {
+    flex: 1; /* Hace que las columnas se expandan para ocupar el espacio disponible */
+    margin-right: 20px; /* Añade un espacio entre las columnas */
+  }
+
+  .column {
+    flex: 1; /* Hace que las columnas se expandan para ocupar el espacio disponible */
+    margin-left: 20px; /* Añade un espacio entre las columnas */
+  }
+
+  .button {
+    
+    font-family: 'FORMULA-A', sans-serif;
+    font-size: small;
+    margin-top: 0%;
+   
+   
+  }
+
+  .teamContainer {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los equipos se envuelvan a la siguiente línea si no hay suficiente espacio */
+    margin-top: 0px; /* Ajusta el margen según sea necesario */
+    gap: 20px;
+  }
+  
+  .teamItem {
+    margin-right: 10px; /* Espacio entre los elementos de los equipos */
+    margin-bottom: 10px; /* Espacio entre las líneas de equipos */
+  }

@@ -1,7 +1,21 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { getAllTeams, postDriver } from "../../redux/actions";
+import validation from "./validation";
 import style from './Form.module.css'
 
 const Form = () => {
+
+  const dispatch = useDispatch();
+  
+  const allTeams = useSelector((state) => state.allTeams);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(getAllTeams());
+}, []);
 
     const [driverData, setDriverData] = useState({
         forename: "",
@@ -9,24 +23,80 @@ const Form = () => {
         nationality: "",
         dob: "",
         description: "",
-        teams: [],
-        image: ""
+        image: "",
+        teams: []
       });
 
-      const [errors, setErrors] = useState({});
+      const [errors, setErrors] = useState({
+        forename: "",
+        surname: "",
+        nationality: "",
+        dob: "",
+        description: "",
+        image: "",
+        teams: ""
+      });
 
-      const handleChange = (event) => {
-        setDriverData({
-          ...driverData,
-          [event.target.name]: event.target.value,
-        });
-      };
-    
-      useEffect(() => {
-        if (driverData.forename !== "" || driverData.surname !== "" || driverData.nationality !== "") {
-          setErrors(validation(driverData));
+
+      const handleChange = (e) => {
+
+        const { name, value } = e.target;
+
+        if (name === 'teams') {
+         if (value === 'Escuderías') {
+                return;
+            }
+
+            if (!driverData.teams.includes(value)) {
+                setDriverData(prevState => ({
+                    ...prevState,
+                    teams: [...prevState.teams, value]
+                }));
+                setErrors(validation({
+                    ...driverData,
+                    teams: [...driverData.teams, value]
+                }));
+            }
+
+        } else {
+
+            setDriverData({
+                ...driverData,
+                [name]: value,
+            });
+
+            setErrors(
+                validation({
+                    ...driverData,
+                    [name]: value,
+                })
+            );
+
         }
-      }, [driverData]);
+
+    };
+
+    const handleRemove = (team) => (e) => {
+      e.preventDefault();
+      setDriverData(prevState => ({
+          ...prevState,
+          teams: prevState.teams.filter(escuderia => escuderia !== team)
+      }));
+      setErrors(validation({
+          ...driverData,
+          teams: driverData.teams.filter(escuderia => escuderia !== team)
+      }));
+  };
+
+
+
+const handleSubmit = async(e) => {
+    e.preventDefault();
+    dispatch(await postDriver(driverData));
+    navigate('/home');
+};
+    
+
 
     return (
       
@@ -34,70 +104,81 @@ const Form = () => {
         
         <div className={style.container}>
 
-            <form action="" className={style.formContainer}>
-              
-            <div className={style.formRow}>
-                <label htmlFor="forename">FORENAME</label>
-                <input type="forename"
-                       value={driverData.forename}
-                       name="forename"
-                       onChange={handleChange} 
-                
-                />
+
+
+<form onSubmit={handleSubmit} className={style.formContainer}>
+
+                <div className={style.formrow}>
+                <div className={style.columnn}>
+                <label>FORENAME</label>
+                <input onChange={handleChange} name="forename" type="text" />
+                {errors.forename ? <label>{errors.forename}</label> : null}
+  
+                <div className={style.columnn}>
+                <label>SURNAME</label>
+                <input onChange={handleChange} name="surname" type="text" />
+                {errors.surname ? <label>{errors.surname}</label> : null}
+                </div>
+
+                </div>
+
+                <div className={style.formrow}>
+                <div className={style.columnn}>
+                <label>NATIONALITY</label>
+                <input onChange={handleChange} name="nationality" type="text" />
+                {errors.nationality ? <label>{errors.nationality}</label> : null}
                 
 
-                <label htmlFor="surname">SURNAME</label>
-                <input type="surname"
-                       value={driverData.surname}
-                       name="surname"
-                       onChange={handleChange} 
+                <div className={style.columnn}></div>
+                <label>IMAGE</label>
+                <input onChange={handleChange} name="image" type="text" />
+                {errors.image ? <label>{errors.image}</label> : null}
+                </div>
+                </div>
+
+                <div className={style.formrow}>
+                <div className={style.column}></div>
+                <label>DATE OF BIRTH</label>
+                <input onChange={handleChange} name="dob" type="date" />
+                {errors.birthday ? <label>{errors.birthday}</label> : null}
+                </div>
                  
-                />
-            </div>
-
-            <br />
-
-            <div className={style.formRow}>
-                <label htmlFor="nationality">NATIONALITY</label>
-                <input type="nationality"
-                       value={driverData.nationality}
-                       name="nationality"
-                       onChange={handleChange}
+                <div className={style.column}>
+                 <label>TEAMS</label>
+                    <select onChange={handleChange} name="teams">
+                        <option value="Escuderías">ALL TEAMS</option>
+                        {[...allTeams].sort((a, b) => a.name.localeCompare(b.name)).map(team => (
+                            <option key={team.id} value={team.name}>
+                                {team.name}
+                            </option>
+                        ))}
+                    </select>
+                    <div>
+                    </div>
+                    <div className={style.teamContainer}>
+                        {driverData.teams.map((team, index) => (
+                            <div key={index}>
+                                <p>{team}</p>
+                                <button onClick={handleRemove(team)} className={style.button}>X</button>
+                            </div>
+                        ))}
+                        {errors.teams ? <label>{errors.teams}</label> : null}
+                        </div>
+               
+                    </div>
+                    </div>
+                    
+                <div className={style.column}>
+                <label>DESCRIPTION</label>
+                <textarea onChange={handleChange} name="description" type="text" />
+                {errors.description ? <label>{errors.description}</label> : null}
+                <div>
+                </div>
                 
-                />
+                </div>
 
-                <label htmlFor="dob">BIRTH DATE</label>
-                <input type="dob" 
-                       value={driverData.dob}
-                       name="dob"
-                       onChange={handleChange}
+                <button type="submit">CREATE</button>
                 
-                />
-            </div>
-
-            <br />
-
-                <label htmlFor="teams">TEAMS</label>
-                <input type="teams"
-                       value={driverData.teams}
-                       name="teams"
-                       onChange={handleChange} 
-                
-                />
-
-                <br />
-                <br />
-
-                <label htmlFor="description">DESCRIPTION</label>
-                <textarea type="textarea" 
-                       value={driverData.description}
-                       name="description"
-                       onChange={handleChange}
-                
-                />
-
-                <button>SAVE</button>
-
             </form>
 
         </div>

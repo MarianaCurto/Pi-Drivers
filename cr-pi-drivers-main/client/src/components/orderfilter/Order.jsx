@@ -45,7 +45,7 @@ const Order = () => {
           </select>
 
           <select onChange={handleFilterDrivers} className={style.driverselect}>
-          <option value='All drivers'>ALL DRIVERS</option>
+          <option value='All drivers'>DRIVERS</option>
             <option value='DB'>DRIVERS CREATED</option>
             <option value='API'>API DRIVERS</option>
           </select>

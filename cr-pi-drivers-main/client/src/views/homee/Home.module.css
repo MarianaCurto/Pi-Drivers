@@ -1,3 +1,5 @@
+@import url('https://fonts.cdnfonts.com/css/formula-a');
+
 .container {
     display: flex;
     flex-wrap:wrap; /* Permite que las tarjetas se envuelvan a la siguiente fila si no hay espacio suficiente */
@@ -12,5 +14,46 @@
   box-sizing: border-box; /* Asegura que el ancho incluya el padding y el borde */
   max-width: calc(25% - 5px); /* Limita el ancho máximo para evitar que se desborde */
 }
+
+.button {
+  height: 45px;
+  font-family: 'FORMULA-A', sans-serif;
+  width: 100px;
+  margin-top: 10px;
+  left: 85px;
+  position: absolute;
+  overflow: hidden;
+    background-color:rgba(200, 196, 196, 0.5);
+    transition: transform 0.5s;
+ 
+}
+
+.button:hover {
+  box-shadow: paleturquoise;
+  transform: scale(1.05) rotate(2deg); 
+  background-color: rgba(200, 196, 196, 0.5);
+  
+}
+
+.buton {
+  height: 45px;
+  font-family: 'FORMULA-A', sans-serif;
+  width: 100px;
+  margin-top: 70px;
+  left: 85px;
+  position: absolute;
+  overflow: hidden;
+  background-color:rgba(200, 196, 196, 0.5);
+  transition: transform 0.5s;
+ 
+}
+
+.buton:hover {
+  box-shadow: paleturquoise;
+  transform: scale(1.05) rotate(2deg); 
+  background-color: rgba(200, 196, 196, 0.5);
+  
+}
+
    
   

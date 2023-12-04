@@ -25,10 +25,15 @@ const Landing = () => {
       }, [])
 
     return(
-        <div className={style.container}>
-            <h1>DRIVE TO SURVIVE</h1>
+
+      <div className={style.container} >
+
+    
+      <img src="/src/assets/pictures/formula.png" alt="" className={style.imgClass}/>
+           
+
             <Link to = '/home'>
-            <button>START</button>
+            <button className={style.button}>DRIVE TO SURVIVE</button>
             </Link>
      
 

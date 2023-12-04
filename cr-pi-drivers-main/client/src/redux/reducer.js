@@ -1,4 +1,12 @@
-import { GET_ALL_DRIVERS, ORDER_DRIVERS, RESET_ORDER, ORDER_DRIVERS_DOB, GET_ALL_TEAMS, FILTER_TEAMS, FILTER_DRIVERS, GET_DRIVER_BY_NAME, GO_BACK } from "./action-types";
+import { GET_ALL_DRIVERS, 
+         ORDER_DRIVERS, 
+         RESET_ORDER, 
+         ORDER_DRIVERS_DOB, 
+         GET_ALL_TEAMS, 
+         FILTER_TEAMS, 
+         FILTER_DRIVERS, 
+         GET_DRIVER_BY_NAME, 
+         GO_BACK } from "./action-types";
 
 const initialState = {
     allDrivers: [],

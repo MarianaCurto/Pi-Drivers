@@ -7,8 +7,7 @@
     text-align: center; /* Para centrar el contenido de la barra de navegación */
     padding: 1rem; /* Añade relleno para mejorar la apariencia */
     position: fixed; /* Hace que la barra de navegación sea fija en la parte superior */
-    top: 0; /* Posiciona la barra en la parte superior */
-   
+    top: 0; /* Posiciona la barra en la parte superior */  
     right: 50px;
     z-index: 1000; /* Asegura que esté encima de otros elementos  */
     display: flex;
