@@ -25,10 +25,9 @@ const getDriver = async (req, res) => {
 
     const nameStr = name.toLowerCase()
 
-    const filteredDrivers = data.filter((driver)=>{
-      const forename = driver.name?.forename.toLowerCase()
-      return forename == nameStr
-    });
+    const filteredDrivers = data.filter((driver)=>driver.name?.forename.toLowerCase().includes(nameStr)
+      
+    );
 
     if(!filteredDrivers.length && !driverArray.length) throw new Error ('No driver found')
       
