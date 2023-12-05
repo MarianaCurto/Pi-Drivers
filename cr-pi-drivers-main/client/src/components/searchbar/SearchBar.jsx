@@ -9,7 +9,7 @@ const SearchBar = () => {
     const dispatch = useDispatch();
 
     const allDrivers = useSelector((state) => state.allDrivers)
-    console.log(allDrivers)
+
 
     const [name, setName] = useState("");
 

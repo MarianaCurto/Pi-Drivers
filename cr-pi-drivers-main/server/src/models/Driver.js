@@ -1,46 +1,45 @@
-const { DataTypes, UUIDV4 } = require('sequelize');
+const { DataTypes, UUIDV4 } = require("sequelize");
 
 module.exports = (sequelize) => {
-  
-  const Driver = sequelize.define('Driver', {
-    id:{
-      type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
-      primaryKey: true
-    },
-    forename: 
-
-      {
-        type: DataTypes.STRING, // Especifica que 'name' es de tipo JSON
+  const Driver = sequelize.define(
+    "Driver",
+    {
+      id: {
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
+        primaryKey: true,
+      },
+      forename: {
+        type: DataTypes.STRING,
         allowNull: false,
       },
-    surname: {
-      type: DataTypes.STRING,
-      allowNull: false
+      surname: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      description: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      image: {
+        type: DataTypes.STRING(100),
+        allowNull: false,
+        isUrl: true,
+      },
+      nationality: {
+        type: DataTypes.STRING(40),
+        allowNull: false,
+      },
+      dob: {
+        type: DataTypes.DATEONLY,
+        allowNull: false,
+      },
+      created: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
+      },
     },
-    description: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    image: {
-      type: DataTypes.STRING(100),
-      allowNull: false,
-      isUrl: true,
-      // defaultValue: 'https://hips.hearstapps.com/autoweek/assets/s3fs-public/DPkZATWXUAAnsCz.jpg'
-    },
-    nationality: {
-      type: DataTypes.STRING(40),
-      allowNull: false
-    },
-    dob: {
-      type: DataTypes.DATEONLY,
-      allowNull: false
-    },
-    created: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: true
-    }
-  },
-  { timestamps: false });
-  return Driver
+    { timestamps: false }
+  );
+  return Driver;
 };

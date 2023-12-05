@@ -1,10 +1,9 @@
-const { Teams } = require('../db');
-const axios = require('axios');
-
+const { Teams } = require("../db");
+const axios = require("axios");
 
 const getAllTeams = async (req, res) => {
   try {
-    const { data } = await axios.get('http://localhost:5000/drivers');
+    const { data } = await axios.get("http://localhost:5000/drivers");
 
     const foundTeam = await Teams.findAll();
 
@@ -29,7 +28,7 @@ const getAllTeams = async (req, res) => {
       await Teams.create({ name: team });
     }
 
-    const found = await Teams.findAll()
+    const found = await Teams.findAll();
 
     return res.status(200).json(found);
   } catch (error) {
@@ -38,5 +37,5 @@ const getAllTeams = async (req, res) => {
 };
 
 module.exports = {
-    getAllTeams
-}
+  getAllTeams,
+};

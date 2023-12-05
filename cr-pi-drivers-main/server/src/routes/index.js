@@ -1,23 +1,16 @@
-// const { Router } = require("express");
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const { getDriver } = require('../controllers/getDriver');
-const { getDetail } = require('../controllers/getDetail');
-const { getDriversByName } = require('../controllers/getDriverByName');
-const { postDriver } = require('../controllers/postDriver');
-const { getAllTeams } = require('../controllers/getAllTeams');
+const { getDriver } = require("../controllers/getDriver");
+const { getDetail } = require("../controllers/getDetail");
+const { postDriver } = require("../controllers/postDriver");
+const { getAllTeams } = require("../controllers/getAllTeams");
 
+router.get("/drivers", getDriver);
 
-router.get('/drivers', getDriver);
+router.get("/drivers/:id", getDetail);
 
-// router.get('/drivers', getDriversByName);
+router.post("/drivers", postDriver);
 
-router.get('/drivers/:id', getDetail);
+router.get("/teams", getAllTeams);
 
-router.post('/drivers', postDriver);
-
-router.get('/teams', getAllTeams);
-
-
-
-module.exports = {router};
+module.exports = { router };
