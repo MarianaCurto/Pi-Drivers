@@ -1,5 +1,8 @@
 import {
   GET_ALL_DRIVERS,
+  GET_ALL_TEAMS,
+  GET_DRIVER_BY_NAME,
+  GET_DRIVER_ID,
   ORDER_DRIVERS,
   ORDER_DRIVERS_DOB,
   FILTER_TEAMS,
@@ -12,6 +15,7 @@ const initialState = {
   filteredDrivers: [],
   allTeams: [],
   filteredTeams: [],
+  driver: {},
   currentPage: 1,
 };
 
@@ -115,16 +119,17 @@ const reducer = (state = initialState, action) => {
         }
         return false;
       });
-      if(action.payload.selectedTeam === 'All teams'){
-        return{
-            ...state,
-            allDrivers: state.filteredDrivers
-        }} else {
-          return {
-            ...state,
-            allDrivers: filteredDrivers
-          }
-        }
+      if (action.payload.selectedTeam === "All teams") {
+        return {
+          ...state,
+          allDrivers: state.filteredDrivers,
+        };
+      } else {
+        return {
+          ...state,
+          allDrivers: filteredDrivers,
+        };
+      }
     case GO_BACK:
       return {
         ...state,
