@@ -1,12 +1,9 @@
 import {
   GET_ALL_DRIVERS,
   ORDER_DRIVERS,
-  // RESET_ORDER,
   ORDER_DRIVERS_DOB,
-  GET_ALL_TEAMS,
   FILTER_TEAMS,
   FILTER_DRIVERS,
-  GET_DRIVER_BY_NAME,
   GO_BACK,
 } from "./action-types";
 
@@ -37,6 +34,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         allDrivers: action.payload,
+      };
+
+    case GET_DRIVER_ID:
+      return {
+        ...state,
+        driver: action.payload,
       };
 
     case ORDER_DRIVERS:
@@ -106,8 +109,6 @@ const reducer = (state = initialState, action) => {
       }
 
     case FILTER_TEAMS:
- 
-
       const filteredDrivers = action.payload.drivers.filter((driv) => {
         if (driv.teams) {
           return driv.teams.includes(action.payload.selectedTeam);

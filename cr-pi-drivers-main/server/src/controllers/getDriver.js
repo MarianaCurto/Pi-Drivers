@@ -16,7 +16,17 @@ const getDriver = async (req, res) => {
         },
       });
 
-      const driverArray = Object.values(driverDB).map((value) => ({ value }));
+      const driverArray = Object.values(driverDB).map((driver) => ({
+        id: driver.id,
+        forename: driver?.forename,
+        surname: driver?.surname,
+        description: driver.description,
+        image: driver.image,
+        nationality: driver.nationality,
+        teams: driver.teams,
+        dob: driver.dob,
+        created: false,
+      }));;
 
       const { data } = await axios(`http://localhost:5000/drivers`);
 

@@ -36,7 +36,7 @@ const postDriver = async (req, res) => {
       console.log(clean);
 
       const allTeams = await Teams.findAll();
-      console.log(allTeams);
+      // console.log(allTeams);
       const foundTeams = [];
       allTeams.map((team) => {
         clean.map((x) => {
@@ -46,9 +46,16 @@ const postDriver = async (req, res) => {
 
       console.log(foundTeams);
 
-      foundTeams.map(async(team) => {
+      // foundTeams.map(async(team) => {
+      //   await createdDriver.addTeams(team.name);
+      // });
+      for (const team of foundTeams) {
         await createdDriver.addTeams(team.name);
-      });
+      }
+
+
+      console.log(foundTeams);
+      console.log(createdDriver)
 
      
 
