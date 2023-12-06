@@ -1,4 +1,5 @@
 const validation = (input) => {
+    console.log("Input for validation:", input);
     let errors = {};
     const regexText = /^[a-zA-Z]{2,}$/;
     const regexImage = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/;
@@ -12,21 +13,24 @@ const validation = (input) => {
     if (!regexText.test(input.nationality)) {
         errors.nationality = 'Nationality must contain only letters';
     }
+    // if (!input.birthday ) {
+    //     errors.birthday = 'Mandatory input';
+  
+    // }
     if (input.description.length < 10) {
         errors.description = 'Description should be longer';
     }
     if (!regexImage.test(input.image)) {
         errors.image = 'url is not valid';
     }
-    if (!input.birthday) {
-        errors.birthday = 'Mandatory input'
-  
-    }
     if (!input.teams || input.teams.length === 0) {
         errors.teams = 'You must select at least one team';
     }
-    return errors;
 
+    console.log(errors)
+    return errors;
+ 
 };
+
 
 export default validation;

@@ -73,6 +73,20 @@ const getDriver = async (req, res) => {
         ],
       });
 
+      const driversMap = dbDrivers.map((driver) => {
+        return {
+          id: driver.id,
+          forename: driver.forename,
+          surname: driver.surname,
+          description: driver.description,
+          image: driver.image,
+          nationality: driver.nationality,
+          dob: driver.dob,
+          teams: driver.Teams.map((team)=>team.name).join(", "),
+          
+        }
+      })
+
       const result = (await axios.get("http://localhost:5000/drivers")).data;
 
       const driversDefaultImage = result.map((driver) => {
@@ -90,7 +104,7 @@ const getDriver = async (req, res) => {
           created: false,
         };
       });
-      const total = [...dbDrivers, ...driversDefaultImage];
+      const total = [...driversMap, ...driversDefaultImage];
       return res.status(200).json(total);
     } catch (error) {
       return res.status(500).send(error.message);

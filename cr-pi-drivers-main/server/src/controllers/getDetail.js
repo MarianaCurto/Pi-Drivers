@@ -13,16 +13,37 @@ const getDetail = async (req, res) => {
 
     if (isNaN(id)) {
       // Consultar en la base de datos
-      const find = await Driver.findAll({
-        where: { id },
-        include: Teams,
-      });
+      const find = await Driver.findByPk(id , {
+        include: [
+          {
+            model: Teams,
+            as: "Teams",
+            attributes: ["name"],
+            through: { attributes: [] },
+          },
+        ],
+      }
+        );
+       
+      const foundId = 
+        {
+          id: find.id,
+          forename: find.forename,
+          surname: find.surname,
+          description: find.description,
+          image: find.image,
+          nationality: find.nationality,
+          dob: find.dob,
+          teams: find.Teams.map((team)=>team.name).join(", "),
+          
+        }
+      
 
       if (!find) {
         return res.status(404).json({ message: "Driver not found" });
       }
 
-      return res.status(200).json(find[0]);
+      return res.status(200).json(foundId);
     } else {
       // Si no es un UUID, asumimos que es un ID de la API externa
 

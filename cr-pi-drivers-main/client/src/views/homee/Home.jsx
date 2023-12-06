@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { getAllDrivers, getAllTeams, goback } from "../../redux/actions";
 import style from "./Home.module.css";
 import Card from "../../components/card/Card";
@@ -25,19 +24,11 @@ const Home = () => {
 
   const totalDrivers = allDrivers.length;
 
-  const navigate = useNavigate();
 
   const handleBack = () => {
     dispatch(goback());
   };
 
-  // const handleLanding = () => {
-  //   if (navigate) {
-  //     if (window.location.pathname === "/home") {
-  //       navigate("/");
-  //     }
-  //   }
-  // };
 
   return (
     <div className={style.container}>
@@ -45,9 +36,6 @@ const Home = () => {
         ALL DRIVERS
       </button>
 
-      {/* <button onClick={handleLanding} className={style.buton}>
-        BACK
-      </button> */}
 
       {allDrivers
         .slice(firstIndex, lastIndex)

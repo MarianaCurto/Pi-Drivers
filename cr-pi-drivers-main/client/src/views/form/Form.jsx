@@ -16,6 +16,8 @@ const Form = () => {
     dispatch(getAllTeams());
   }, []);
 
+
+
   const [driverData, setDriverData] = useState({
     forename: "",
     surname: "",
@@ -24,6 +26,7 @@ const Form = () => {
     description: "",
     image: "",
     teams: [],
+    created: true
   });
 
   const [errors, setErrors] = useState({
@@ -67,6 +70,7 @@ const Form = () => {
           ...driverData,
           [name]: value,
         })
+        
       );
     }
   };
@@ -85,9 +89,27 @@ const Form = () => {
     );
   };
 
+  const handleDisable = () => {
+    let hasErrors = false;
+
+    for (let err in errors) {
+      if (errors[err] !== "") {
+        hasErrors = true;
+        break;
+      }
+    }
+
+    return hasErrors;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(await postDriver(driverData));
+    const teamsAsString = driverData.teams.join(", ");
+    const formWithTeamsAsString = {
+      ...driverData,
+      teams: teamsAsString,
+    };
+    dispatch(await postDriver(formWithTeamsAsString));
     navigate("/home");
   };
 
@@ -161,7 +183,7 @@ const Form = () => {
           <div></div>
         </div>
 
-        <button type="submit">CREATE</button>
+        <button type="submit" disabled= {handleDisable()}>CREATE</button>
       </form>
     </div>
   );

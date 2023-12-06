@@ -65,10 +65,10 @@ export const getDriverId = (id) => {
   };
 };
 
-export const postDriver = (driverData) => {
+export const postDriver = (newDriver) => {
   return async (dispatch) => {
     try {
-      await axios.post("http://localhost:3001/drivers", driverData);
+      await axios.post("http://localhost:3001/drivers", newDriver);
       console.log("creado");
     } catch (error) {
       console.log(error.message);
