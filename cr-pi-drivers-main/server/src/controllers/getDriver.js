@@ -14,6 +14,14 @@ const getDriver = async (req, res) => {
             { surname: { [Sequelize.Op.iLike]: `%${name}%` } },
           ],
         },
+        include: [
+          {
+            model: Teams,
+            as: "Teams",
+            attributes: ["name"],
+            through: { attributes: [] },
+          },
+        ]
       });
 
       const driverArray = Object.values(driverDB).map((driver) => ({
@@ -23,9 +31,8 @@ const getDriver = async (req, res) => {
         description: driver.description,
         image: driver.image,
         nationality: driver.nationality,
-        teams: driver.teams,
+        teams: driver.Teams.map((team)=>team.name).join(", "),
         dob: driver.dob,
-        created: false,
       }));;
 
       const { data } = await axios(`http://localhost:5000/drivers`);
@@ -83,6 +90,7 @@ const getDriver = async (req, res) => {
           nationality: driver.nationality,
           dob: driver.dob,
           teams: driver.Teams.map((team)=>team.name).join(", "),
+          created: true,
           
         }
       })

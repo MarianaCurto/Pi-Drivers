@@ -20,7 +20,7 @@ const Home = () => {
   useEffect(() => {
     if (!allDrivers.length) dispatch(getAllDrivers());
     if (!allTeams.length) dispatch(getAllTeams());
-  }, []);
+  }, [allDrivers]);
 
   const totalDrivers = allDrivers.length;
 

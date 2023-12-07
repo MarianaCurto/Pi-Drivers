@@ -26,7 +26,6 @@ const Form = () => {
     description: "",
     image: "",
     teams: [],
-    created: true
   });
 
   const [errors, setErrors] = useState({
@@ -102,15 +101,16 @@ const Form = () => {
     return hasErrors;
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
+   
     const teamsAsString = driverData.teams.join(", ");
     const formWithTeamsAsString = {
       ...driverData,
       teams: teamsAsString,
     };
     dispatch(await postDriver(formWithTeamsAsString));
-    navigate("/home");
+    alert('Driver created successfully')
+   
   };
 
   return (

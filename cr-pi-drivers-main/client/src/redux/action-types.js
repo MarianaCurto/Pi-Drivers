@@ -2,6 +2,7 @@ export const GET_ALL_DRIVERS = "GET_ALL_DRIVERS";
 export const GET_ALL_TEAMS = "GET_ALL_TEAMS";
 export const GET_DRIVER_BY_NAME = "GET_DRIVER_BY_NAME";
 export const GET_DRIVER_ID = 'GET_DRIVER_ID';
+export const POST_DRIVER = 'POST_DRIVER';
 export const FILTER_TEAMS = "FILTER_TEAMS";
 export const FILTER_DRIVERS = "FILTER_DRIVERS";
 export const ORDER_DRIVERS = "ORDER_DRIVERS";

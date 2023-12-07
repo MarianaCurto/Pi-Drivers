@@ -3,6 +3,7 @@ import {
   GET_ALL_TEAMS,
   GET_DRIVER_BY_NAME,
   GET_DRIVER_ID,
+  // POST_DRIVER,
   ORDER_DRIVERS,
   ORDER_DRIVERS_DOB,
   FILTER_TEAMS,
@@ -45,6 +46,13 @@ const reducer = (state = initialState, action) => {
         ...state,
         driver: action.payload,
       };
+    
+    // case POST_DRIVER:
+    //   return{
+    //     ...state,
+    //     allDrivers: [...action.payload, ...state.allDrivers]
+    //   }
+    
 
     case ORDER_DRIVERS:
       switch (action.payload) {
